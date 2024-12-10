@@ -1,0 +1,24 @@
+peers = []
+sync_socket = "0.0.0.0:9991"
+kms_api_socket = "0.0.0.0:9992"
+
+kms_registration_socket = "0.0.0.0:9993"
+https_cert = '''
+@CLIENT_CA_CERT@
+'''
+
+https_private_key = '''
+@CLIENT_CA_PRIVATE_KEY@
+'''
+
+client_root_ca_cert = '''
+@CLIENT_CA_CERT@
+'''
+
+ca_private_key = '''
+@CLIENT_CA_PRIVATE_KEY@
+'''
+
+ca_public_key_cert = '''
+@CLIENT_CA_CERT@
+'''

@@ -1,0 +1,53 @@
+[package]
+name = "trusted-kms"
+description = "Trusted Hardware protected KMS"
+version = "0.1.0"
+edition = "2021"
+repository = "https://github.com/EmisonLu/trusted-kms/"
+readme = "README.md"
+license = "Apache-2.0"
+
+[[bin]]
+name = "tee-kms"
+
+[[bin]]
+name = "client"
+
+[features]
+
+
+[dependencies]
+actix-web = { version = "4", features = ["rustls-0_21"] }
+actix-tls = "3.3.0"
+
+rustls = "0.21"
+rustls-pemfile = "1"
+
+reqwest = { version = "0.11", default-features = false, features = ["rustls-tls"] }
+
+anyhow = "1"
+async-trait = "0.1.80"
+base64 = "0.22.1"
+bincode = "1.3.3"
+config = "0.14"
+clap = { version = "4", features = [ "derive" ] }
+env_logger = "0.11.3"
+log = "0.4.14"
+rcgen = { version = "0.12.1", features = ["x509-parser"]}
+ring = "0.17"
+prost = "0.12"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+strum = { version = "0.26", features = ["derive"] }
+thiserror = "1.0"
+tokio = { version = "1", features = ["sync", "macros", "rt-multi-thread", "signal"] }
+tonic = "0.11"
+uuid = { version = "1.8.0", features = ["v4"] }
+
+x509-parser = "0.16.0"
+
+[dev-dependencies]
+rstest = "0.19.0"
+
+[build-dependencies]
+tonic-build = "0.11"

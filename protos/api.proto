@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package api;
+
+message SyncCmkRequest {
+    string cmk_id = 1;
+}
+
+message SyncCmkResponse {
+    string cmk_id = 1;
+    bytes cmk = 2;
+}
+
+service SyncService {
+    rpc SyncCmk(SyncCmkRequest) returns (SyncCmkResponse) {};
+}

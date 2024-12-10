@@ -1,0 +1,215 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tee-kms-config
+data:
+  instance: |-
+    peers = [
+      "tee-kms-cluster-0.tee-kms.namespace.svc.cluster.local:9991",
+      "tee-kms-cluster-1.tee-kms.namespace.svc.cluster.local:9991",
+      "tee-kms-cluster-2.tee-kms.namespace.svc.cluster.local:9991"
+    ]
+    sync_socket = "0.0.0.0:9991"
+    kms_api_socket = "0.0.0.0:9992"
+
+    kms_registration_socket = "0.0.0.0:9993"
+    https_cert = '''
+    -----BEGIN CERTIFICATE-----
+    MIIDijCCAnKgAwIBAgIUYgsW+qA/sefmEWyvs4kQMItAKdUwDQYJKoZIhvcNAQEL
+    BQAwbzELMAkGA1UEBhMCQ04xETAPBgNVBAgMCFpoZWppYW5nMREwDwYDVQQHDAhI
+    YW5nemhvdTERMA8GA1UECgwIQUFTLVRFU1QxFDASBgNVBAsMC0RldmVsb3BtZW50
+    MREwDwYDVQQDDAhBQVMtVEVTVDAeFw0yNDA1MjcxMzEyMzdaFw0yNTA1MjcxMzEy
+    MzdaMG8xCzAJBgNVBAYTAkNOMREwDwYDVQQIDAhaaGVqaWFuZzERMA8GA1UEBwwI
+    SGFuZ3pob3UxETAPBgNVBAoMCEFBUy1URVNUMRQwEgYDVQQLDAtEZXZlbG9wbWVu
+    dDERMA8GA1UEAwwIQUFTLVRFU1QwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEK
+    AoIBAQDHiKQlx4FUF57k1XHb8P9GBExDslx1pqPfa+Q37jnBFOikSj4O9bEGT0OR
+    6DRZhSPmEYkj3+FHnXzVCQZGG//ntvOKofTjT0IzbVHrdrdoR4VlXccdLeQfsvdL
+    af+DjmE/EHf3b3b6/hR2NElu36hiSO1D6kPgP3edzVUY0uwdylmuKg0tMICi1JHa
+    GF2vohuD1BASvN/Iui+YvaAtvlZMkwtQOlUmBbz61oM2uaoEdVPtA+kBl7Yd8Y4y
+    Sa3/WLrGBoXv8Bu4ApZwVyIeH3tYnTA5dIHABm3s+oOr9FqaSwhjIDEAJ6N8dfeM
+    9gsb8FCZA+naoZQDeUfajpFcDWnVAgMBAAGjHjAcMBoGA1UdEQQTMBGCCWxvY2Fs
+    aG9zdIcEfwAAATANBgkqhkiG9w0BAQsFAAOCAQEAZMyGdZD4PpQqhjcF5rH6ki3r
+    DfzjQEbwYPPyRd24tFzI6YHCPJNquBynEhc8iA81q5SwFmUWolByFwkBvD/aP/0J
+    +aThgPUymJToyvyknWB6jCkaJOfOl6IISSrx1NW8JetjUQVR0+2JitQy2P6Obqef
+    eZvcNsiA9jEe+JZc8uQ3mnWSbdTt8r/uZx5LnY2GJifCZ2YsnA5Xmt011qDhSatf
+    BbIetBiQcNfaylXpXAscYMxV7vLjCDFDTOW0rfQS19E4aw8ISydC4orp1to1NvV1
+    iDQ+mYykVAbgJ4jmKb1TsvTqhw/oeq9MiYA9qWwiLvJMdx9/afCeXULhAvKItw==
+    -----END CERTIFICATE-----
+    '''
+
+    https_private_key = '''
+    -----BEGIN PRIVATE KEY-----
+    MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDHiKQlx4FUF57k
+    1XHb8P9GBExDslx1pqPfa+Q37jnBFOikSj4O9bEGT0OR6DRZhSPmEYkj3+FHnXzV
+    CQZGG//ntvOKofTjT0IzbVHrdrdoR4VlXccdLeQfsvdLaf+DjmE/EHf3b3b6/hR2
+    NElu36hiSO1D6kPgP3edzVUY0uwdylmuKg0tMICi1JHaGF2vohuD1BASvN/Iui+Y
+    vaAtvlZMkwtQOlUmBbz61oM2uaoEdVPtA+kBl7Yd8Y4ySa3/WLrGBoXv8Bu4ApZw
+    VyIeH3tYnTA5dIHABm3s+oOr9FqaSwhjIDEAJ6N8dfeM9gsb8FCZA+naoZQDeUfa
+    jpFcDWnVAgMBAAECggEAWPs8iISBziiCeXYeQoEkteqwv/fId8cKiVYp/i9EnjBe
+    1vUs26sBeNjcPzMYNVvEeJMVX2Q1qKQ4ySAvJhDSfFkAHrC+7qen1BtKTwEwJVbP
+    zDaX1xFiDCjZU04/3kEeaOtFNJkGrEOmiFgk70baZoozFPhhsJ1dEIhDDMDy/w00
+    +2DQ21yu/NkYlJ80johussRDq6oJo5OI5xTn8cU1nle9mAEMJP4/S3tHuLQ3FJ8u
+    0NygsVek5ygjcTubiFTUWLVKRXOUYBlu7lwtjrmUiChtrfEzcW7O9m6byCNEpE7S
+    9NLPR7wJc9eMKsMrW71ZeIVBck5JEtwcRNCQtmz8OQKBgQD/hjxg0mUjpkWCOoJa
+    IeuvNBdcxwJ8QQsep4JE1m/KGcYBuFCaQl5eaRn1o9olmXZYhIxNtzIVlmpMeIR5
+    aAeJJZS4tozeYOHoFkzJGqdGpiWU/NJFRLDoZ70Tl6N1YeG7WJ42Swso+Syj3F/5
+    VTk3YXOpC1ZQNw0LIDE5wdgjPwKBgQDH57luO2MxvLPfah7231LEKDBoPx4BhD1r
+    I/M0vdVXay56DD+s20JIx0k3nB+esEer/uMfWLBycsbzBRdg8ubHlyUzmL4yrJ7O
+    aaPLVRQ3RlDxtKVykuT6clLX/lImYDxjuxSKF8PFcO+GuAmWGqiMI/ilpqK0sjjY
+    WwVVKJox6wKBgCfT3X9d6+PFm9nzkrPHy7uQS//rCQki/j+17kkaf2wp3kIQX4fb
+    xmfCzAgMlQj9RYQAjPnkDwtsWX833bYqr9oBoI+17HkQ8sVBDJDf9ai+Zuc1DPU9
+    ArIG0WLHZPP74LpZ0rc1tTSaugmEZPUxAm0OZH+5w6dXHVJZnzKYcz7zAoGBAK/i
+    ZDZmrioOu7wwpLnVV/8a1SyDjCUNcvSXlt6qv9DAjw33RPcTm0hpfzQce32l4Amm
+    o7Lq16R69CzSJ/W3AfJOO/8fvwja9IbsT58RZk4T4hgoNwGN2UW53MYKD8GQHtIo
+    wjOWITvQ2A6SUmztW6qh453r9XBC9tz1iMWaicCtAoGAF4JOe0/27rhcfpPiAK2+
+    TrVIAPmHqrdnZritd/Xi/TAggUMkF7JineHLSmRvM/Ee2FdmOAwT+1qIbkLiucGn
+    w7yweA6KzL7CBsXjkImBr2nIgoLjnqmi+3jxcyOGlXthoRCZfxnJPADzBTFlWl3o
+    zCGd/0Zi+QBCxvexNQKQiEA=
+    -----END PRIVATE KEY-----
+    '''
+
+    client_root_ca_cert = '''
+    -----BEGIN CERTIFICATE-----
+    MIIDijCCAnKgAwIBAgIUYgsW+qA/sefmEWyvs4kQMItAKdUwDQYJKoZIhvcNAQEL
+    BQAwbzELMAkGA1UEBhMCQ04xETAPBgNVBAgMCFpoZWppYW5nMREwDwYDVQQHDAhI
+    YW5nemhvdTERMA8GA1UECgwIQUFTLVRFU1QxFDASBgNVBAsMC0RldmVsb3BtZW50
+    MREwDwYDVQQDDAhBQVMtVEVTVDAeFw0yNDA1MjcxMzEyMzdaFw0yNTA1MjcxMzEy
+    MzdaMG8xCzAJBgNVBAYTAkNOMREwDwYDVQQIDAhaaGVqaWFuZzERMA8GA1UEBwwI
+    SGFuZ3pob3UxETAPBgNVBAoMCEFBUy1URVNUMRQwEgYDVQQLDAtEZXZlbG9wbWVu
+    dDERMA8GA1UEAwwIQUFTLVRFU1QwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEK
+    AoIBAQDHiKQlx4FUF57k1XHb8P9GBExDslx1pqPfa+Q37jnBFOikSj4O9bEGT0OR
+    6DRZhSPmEYkj3+FHnXzVCQZGG//ntvOKofTjT0IzbVHrdrdoR4VlXccdLeQfsvdL
+    af+DjmE/EHf3b3b6/hR2NElu36hiSO1D6kPgP3edzVUY0uwdylmuKg0tMICi1JHa
+    GF2vohuD1BASvN/Iui+YvaAtvlZMkwtQOlUmBbz61oM2uaoEdVPtA+kBl7Yd8Y4y
+    Sa3/WLrGBoXv8Bu4ApZwVyIeH3tYnTA5dIHABm3s+oOr9FqaSwhjIDEAJ6N8dfeM
+    9gsb8FCZA+naoZQDeUfajpFcDWnVAgMBAAGjHjAcMBoGA1UdEQQTMBGCCWxvY2Fs
+    aG9zdIcEfwAAATANBgkqhkiG9w0BAQsFAAOCAQEAZMyGdZD4PpQqhjcF5rH6ki3r
+    DfzjQEbwYPPyRd24tFzI6YHCPJNquBynEhc8iA81q5SwFmUWolByFwkBvD/aP/0J
+    +aThgPUymJToyvyknWB6jCkaJOfOl6IISSrx1NW8JetjUQVR0+2JitQy2P6Obqef
+    eZvcNsiA9jEe+JZc8uQ3mnWSbdTt8r/uZx5LnY2GJifCZ2YsnA5Xmt011qDhSatf
+    BbIetBiQcNfaylXpXAscYMxV7vLjCDFDTOW0rfQS19E4aw8ISydC4orp1to1NvV1
+    iDQ+mYykVAbgJ4jmKb1TsvTqhw/oeq9MiYA9qWwiLvJMdx9/afCeXULhAvKItw==
+    -----END CERTIFICATE-----
+    '''
+
+    ca_private_key = '''
+    -----BEGIN PRIVATE KEY-----
+    MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDHiKQlx4FUF57k
+    1XHb8P9GBExDslx1pqPfa+Q37jnBFOikSj4O9bEGT0OR6DRZhSPmEYkj3+FHnXzV
+    CQZGG//ntvOKofTjT0IzbVHrdrdoR4VlXccdLeQfsvdLaf+DjmE/EHf3b3b6/hR2
+    NElu36hiSO1D6kPgP3edzVUY0uwdylmuKg0tMICi1JHaGF2vohuD1BASvN/Iui+Y
+    vaAtvlZMkwtQOlUmBbz61oM2uaoEdVPtA+kBl7Yd8Y4ySa3/WLrGBoXv8Bu4ApZw
+    VyIeH3tYnTA5dIHABm3s+oOr9FqaSwhjIDEAJ6N8dfeM9gsb8FCZA+naoZQDeUfa
+    jpFcDWnVAgMBAAECggEAWPs8iISBziiCeXYeQoEkteqwv/fId8cKiVYp/i9EnjBe
+    1vUs26sBeNjcPzMYNVvEeJMVX2Q1qKQ4ySAvJhDSfFkAHrC+7qen1BtKTwEwJVbP
+    zDaX1xFiDCjZU04/3kEeaOtFNJkGrEOmiFgk70baZoozFPhhsJ1dEIhDDMDy/w00
+    +2DQ21yu/NkYlJ80johussRDq6oJo5OI5xTn8cU1nle9mAEMJP4/S3tHuLQ3FJ8u
+    0NygsVek5ygjcTubiFTUWLVKRXOUYBlu7lwtjrmUiChtrfEzcW7O9m6byCNEpE7S
+    9NLPR7wJc9eMKsMrW71ZeIVBck5JEtwcRNCQtmz8OQKBgQD/hjxg0mUjpkWCOoJa
+    IeuvNBdcxwJ8QQsep4JE1m/KGcYBuFCaQl5eaRn1o9olmXZYhIxNtzIVlmpMeIR5
+    aAeJJZS4tozeYOHoFkzJGqdGpiWU/NJFRLDoZ70Tl6N1YeG7WJ42Swso+Syj3F/5
+    VTk3YXOpC1ZQNw0LIDE5wdgjPwKBgQDH57luO2MxvLPfah7231LEKDBoPx4BhD1r
+    I/M0vdVXay56DD+s20JIx0k3nB+esEer/uMfWLBycsbzBRdg8ubHlyUzmL4yrJ7O
+    aaPLVRQ3RlDxtKVykuT6clLX/lImYDxjuxSKF8PFcO+GuAmWGqiMI/ilpqK0sjjY
+    WwVVKJox6wKBgCfT3X9d6+PFm9nzkrPHy7uQS//rCQki/j+17kkaf2wp3kIQX4fb
+    xmfCzAgMlQj9RYQAjPnkDwtsWX833bYqr9oBoI+17HkQ8sVBDJDf9ai+Zuc1DPU9
+    ArIG0WLHZPP74LpZ0rc1tTSaugmEZPUxAm0OZH+5w6dXHVJZnzKYcz7zAoGBAK/i
+    ZDZmrioOu7wwpLnVV/8a1SyDjCUNcvSXlt6qv9DAjw33RPcTm0hpfzQce32l4Amm
+    o7Lq16R69CzSJ/W3AfJOO/8fvwja9IbsT58RZk4T4hgoNwGN2UW53MYKD8GQHtIo
+    wjOWITvQ2A6SUmztW6qh453r9XBC9tz1iMWaicCtAoGAF4JOe0/27rhcfpPiAK2+
+    TrVIAPmHqrdnZritd/Xi/TAggUMkF7JineHLSmRvM/Ee2FdmOAwT+1qIbkLiucGn
+    w7yweA6KzL7CBsXjkImBr2nIgoLjnqmi+3jxcyOGlXthoRCZfxnJPADzBTFlWl3o
+    zCGd/0Zi+QBCxvexNQKQiEA=
+    -----END PRIVATE KEY-----
+    '''
+
+    ca_public_key_cert = '''
+    -----BEGIN CERTIFICATE-----
+    MIIDijCCAnKgAwIBAgIUYgsW+qA/sefmEWyvs4kQMItAKdUwDQYJKoZIhvcNAQEL
+    BQAwbzELMAkGA1UEBhMCQ04xETAPBgNVBAgMCFpoZWppYW5nMREwDwYDVQQHDAhI
+    YW5nemhvdTERMA8GA1UECgwIQUFTLVRFU1QxFDASBgNVBAsMC0RldmVsb3BtZW50
+    MREwDwYDVQQDDAhBQVMtVEVTVDAeFw0yNDA1MjcxMzEyMzdaFw0yNTA1MjcxMzEy
+    MzdaMG8xCzAJBgNVBAYTAkNOMREwDwYDVQQIDAhaaGVqaWFuZzERMA8GA1UEBwwI
+    SGFuZ3pob3UxETAPBgNVBAoMCEFBUy1URVNUMRQwEgYDVQQLDAtEZXZlbG9wbWVu
+    dDERMA8GA1UEAwwIQUFTLVRFU1QwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEK
+    AoIBAQDHiKQlx4FUF57k1XHb8P9GBExDslx1pqPfa+Q37jnBFOikSj4O9bEGT0OR
+    6DRZhSPmEYkj3+FHnXzVCQZGG//ntvOKofTjT0IzbVHrdrdoR4VlXccdLeQfsvdL
+    af+DjmE/EHf3b3b6/hR2NElu36hiSO1D6kPgP3edzVUY0uwdylmuKg0tMICi1JHa
+    GF2vohuD1BASvN/Iui+YvaAtvlZMkwtQOlUmBbz61oM2uaoEdVPtA+kBl7Yd8Y4y
+    Sa3/WLrGBoXv8Bu4ApZwVyIeH3tYnTA5dIHABm3s+oOr9FqaSwhjIDEAJ6N8dfeM
+    9gsb8FCZA+naoZQDeUfajpFcDWnVAgMBAAGjHjAcMBoGA1UdEQQTMBGCCWxvY2Fs
+    aG9zdIcEfwAAATANBgkqhkiG9w0BAQsFAAOCAQEAZMyGdZD4PpQqhjcF5rH6ki3r
+    DfzjQEbwYPPyRd24tFzI6YHCPJNquBynEhc8iA81q5SwFmUWolByFwkBvD/aP/0J
+    +aThgPUymJToyvyknWB6jCkaJOfOl6IISSrx1NW8JetjUQVR0+2JitQy2P6Obqef
+    eZvcNsiA9jEe+JZc8uQ3mnWSbdTt8r/uZx5LnY2GJifCZ2YsnA5Xmt011qDhSatf
+    BbIetBiQcNfaylXpXAscYMxV7vLjCDFDTOW0rfQS19E4aw8ISydC4orp1to1NvV1
+    iDQ+mYykVAbgJ4jmKb1TsvTqhw/oeq9MiYA9qWwiLvJMdx9/afCeXULhAvKItw==
+    -----END CERTIFICATE-----
+    '''
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: tee-kms
+spec:
+  ports:
+  - port: 9991
+  clusterIP: None
+  selector:
+    app: tee-kms-instance
+  ports:
+    - protocol: TCP
+      port: 9992
+    - protocol: TCP
+      port: 9993
+  type: LoadBalancer
+
+---
+
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: tee-kms-cluster
+  labels:
+spec:
+  serviceName: tee-kms-sync
+  replicas: 3
+  selector:
+    matchLabels:
+      app: tee-kms-instance
+  template:
+    metadata:
+      labels:
+        app: tee-kms-instance
+    spec:
+      runtimeClass: kata-qemu-tdx
+      containers:
+      - name: tee-kms-instance
+        image: xynnn007/tee-kms:0.3
+        ports:
+        - containerPort: 9991
+          name: peer-sync
+        - containerPort: 9992
+          name: kms-api
+        - containerdPort: 9993
+          name: kms-registration
+        volumeMounts:
+        - name: config-volume
+          mountPath: /etc/tee-kms.toml
+      - name: tng
+        image: xynnn007/envoy:light
+        ports:
+        - containerPort: 8080
+        - containerPort: 8443
+        volumeMounts:
+        - name: config-volume
+          mountPath: /etc/envoy
+      volumes:
+      - name: config-volume
+        configMap:
+          name: tee-kms-config
+          items:
+          - key: "instance"
+            path: "tee-kms.toml"
